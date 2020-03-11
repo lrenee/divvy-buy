@@ -19,7 +19,7 @@
 
 All files are located in:
 
-
+https://github.com/lrenee/divvy-buy/blob/master/divvybuy-wireframes.xlsx
 
 ### Project Tracker
 
