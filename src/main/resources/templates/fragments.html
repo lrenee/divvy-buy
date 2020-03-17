@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title>DIVVY BUY</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" th:href="@{/styles.css}">
+    
+</head>
+<body>
+
+    <nav th:fragment="header">
+        <h1 th:text="${title}">DIVVY BUY</h1>
+        <ul class="nav">
+            <li class="nav-item"><a class="nav-link" href="/threads">All Threads</a></li>
+            <li class="nav-item"><a class="nav-link" href="/threads/create">Create Thread</a></li>
+            <li class="nav-item"><a class="nav-link" href="/search">Search</a></li>
+            <li class="nav-item"><a class="nav-link" href="/userprofile">View User Profile</a></li>
+            <li class="nav-item"><a class="nav-link" href="/userprofile/update">Update User Profile</a></li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+            <li class="nav-item"><a class="nav-link" href="/threads/delete">Delete Threads</a></li>
+            <li class="nav-item"><a class="nav-link" href="/topics">All Topics</a></li>
+            <li class="nav-item"><a class="nav-link" href="/topics/create">Create Topic</a></li>
+        </ul>
+    </nav>
+
+</body>
+</html>
