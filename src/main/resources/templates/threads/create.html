@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+    <header th:replace="fragments :: header"></header>
+
+    <form method = "post" action="/threads/create">
+        <div class="form-group">
+            <label>Thread Name
+                <input th:field="$thread.threadName}" class="form-control">
+            </label>
+            <p class="error" th:errors="${thread.threadName}"></p>
+        </div>
+        <div class="form-group">
+            <label>Description
+                <input th:field="${thread.threadDetails.description}" class="form-control">
+            </label>
+            <p class="error" th:errors="${thread.threadDetails.description}"></p>
+        </div>
+        <div class="form-group">
+            <label>Contact Email
+                <input th:field="${thread.threadDetails.contactEmail}" class="form-control">
+            </label>
+            <p class="error" th:errors="${thread.threadDetails.contactEmail}"></p>
+        </div>
+        <div class="form-group">
+            <label>Topic
+                <select th:field="${thread.topic}">
+                    <option th:each="topic : ${topics}"
+                            th:value = "${topic.topicId}"
+                            th:text="${topic.topicName}"
+                    ></option>
+                </select>
+                <p class="error" th:errors="${thread.topic}"></p>
+            </label>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-success">
+        </div>
+    </form>
+
+</body>
+</html>
