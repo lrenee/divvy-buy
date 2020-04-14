@@ -23,7 +23,7 @@ public class TopicController {
     @GetMapping
     public String displayAllTopics(Model model) {
         model.addAttribute("title", "All Topics");
-        model.addAttribute("topics", topicRepository.findAll());
+        model.addAttribute("topicCategories", topicRepository.findAll());
         return "topics/index";
     }
 
@@ -35,13 +35,13 @@ public class TopicController {
     }
 
     @PostMapping("create")
-    public String processCreateTopicForm(@ModelAttribute @Valid Topic topicName, Errors errors, Model model) {
+    public String processCreateTopicForm(@ModelAttribute @Valid Topic topic, Errors errors, Model model) {
         if(errors.hasErrors()) {
             model.addAttribute("title", "Create Topic");
             model.addAttribute(new Topic());
             return "topics/create";
         }
-        topicRepository.save(topicName);
+        topicRepository.save(topic);
         return "redirect:";
     }
 

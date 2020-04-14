@@ -20,11 +20,11 @@ public class Thread extends AbstractEntity {
 
     @ManyToOne
     @NotNull(message = "Topic is required.")
-    private Topic topicName;
+    private Topic topic;
 
     public Thread(String threadName, Topic topic) {
         this.threadName = threadName;
-        this.topicName = topicName;
+        this.topic = topic;
     }
 
     public Thread() {
@@ -47,12 +47,12 @@ public class Thread extends AbstractEntity {
         this.threadDetails = threadDetails;
     }
 
-    public Topic getTopicName() {
-        return topicName;
+    public Topic getTopic() {
+        return topic;
     }
 
-    public void setTopic(Topic topicName) {
-        this.topicName = topicName;
+    public void setTopic(Topic topic) {
+        this.topic = topic;
     }
 
     @Override

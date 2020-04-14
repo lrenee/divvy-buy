@@ -24,19 +24,19 @@ public class ThreadController {
     private TopicRepository topicRepository;
 
     @GetMapping
-    public String displayAllThreads(@RequestParam(required = false)Integer topicId, Model model) {
+    public String displayAllThreads(@RequestParam(required = false) Integer topicCategoryId, Model model) {
 
-        if (topicId == null) {
+        if (topicCategoryId == null) {
             model.addAttribute("title", "All Threads");
             model.addAttribute("threads", threadRepository.findAll());
         } else {
-            Optional<Topic> result = topicRepository.findById(topicId);
+            Optional<Topic> result = topicRepository.findById(topicCategoryId);
             if (result.isEmpty()) {
-                model.addAttribute("title", "Invalid Topic ID: " + topicId);
+                model.addAttribute("title", "Invalid Topic ID: " + topicCategoryId);
             } else {
-                Topic topic = result.get();
-                model.addAttribute("title", "Threads in topic: " + topic.getTopicName());
-                model.addAttribute("threads", topic.getThreads());
+                Topic topicCategory = result.get();
+                model.addAttribute("title", "Threads in topic: " + topicCategory.getTopicName());
+                model.addAttribute("threads", topicCategory.getThreads());
             }
         }
 
@@ -47,19 +47,19 @@ public class ThreadController {
     public String displayCreateThreadForm(Model model) {
         model.addAttribute("title", "Create Thread");
         model.addAttribute(new Thread());
-        model.addAttribute("topics", topicRepository.findAll());
+        model.addAttribute("topicCategories", topicRepository.findAll());
         return "threads/create";
 
     }
 
 
     @PostMapping("create")
-    public String processCreateThreadForm(@ModelAttribute @Valid Thread newThreadName, Errors errors, Model model) {
+    public String processCreateThreadForm(@ModelAttribute @Valid Thread newThread, Errors errors, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Thread");
             return "threads/create";
         }
-        threadRepository.save(newThreadName);
+        threadRepository.save(newThread);
         return "redirect:";
     }
 
@@ -70,6 +70,18 @@ public class ThreadController {
         return "threads/delete";
     }
 
+    @PostMapping("delete")
+    public String processDeleteThreadsForm(@RequestParam(required=false) int[] threadIds) {
+
+        if (threadIds != null) {
+            for (int id : threadIds) {
+                threadRepository.deleteById(id);
+            }
+        }
+
+        return "redirect:";
+    }
+
     @GetMapping("detail")
     public String displayThreadDetails(@RequestParam Integer threadId, Model model) {
 
@@ -78,9 +90,9 @@ public class ThreadController {
         if (result.isEmpty()) {
             model.addAttribute("title", "Invalid Thread ID: " + threadId);
         } else {
-            Thread threadName = result.get();
-            model.addAttribute("title", threadName.getThreadName() + " Details");
-            model.addAttribute("threadName", threadName);
+            Thread thread = result.get();
+            model.addAttribute("title", thread.getThreadName() + " Details");
+            model.addAttribute("thread", thread);
         }
         return "threads/detail";
     }

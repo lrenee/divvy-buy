@@ -9,15 +9,15 @@
     <form method = "post" action="/threads/create">
         <div class="form-group">
             <label>Thread Name
-                <input th:field="$thread.threadName}" class="form-control">
+                <input th:field="${thread.threadName}" class="form-control">
             </label>
             <p class="error" th:errors="${thread.threadName}"></p>
         </div>
         <div class="form-group">
-            <label>Description
-                <input th:field="${thread.threadDetails.description}" class="form-control">
+            <label>Message
+                <input th:field="${thread.threadDetails.threadMessage}" class="form-control">
             </label>
-            <p class="error" th:errors="${thread.threadDetails.description}"></p>
+            <p class="error" th:errors="${thread.threadDetails.threadMessage}"></p>
         </div>
         <div class="form-group">
             <label>Contact Email
@@ -28,8 +28,8 @@
         <div class="form-group">
             <label>Topic
                 <select th:field="${thread.topic}">
-                    <option th:each="topic : ${topics}"
-                            th:value = "${topic.topicId}"
+                    <option th:each="topic : ${topicCategories}"
+                            th:value = "${topic.id}"
                             th:text="${topic.topicName}"
                     ></option>
                 </select>

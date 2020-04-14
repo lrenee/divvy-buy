@@ -13,8 +13,8 @@
             <th>Topic Name</th>
         </tr>
         </thead>
-        <tr th:each="topic : ${topics}">
-            <td> <a th:text="${topic.topicName}" th:href="'/threads?topicId=' + ${topic.topicId}"></a></td>
+        <tr th:each="topicCategory : ${topicCategories}">
+            <td> <a th:text="${topicCategory.topicName}" th:href="'/threads?topicCategoryId=' + ${topicCategory.id}"></a></td>
         </tr>
     </table>
 

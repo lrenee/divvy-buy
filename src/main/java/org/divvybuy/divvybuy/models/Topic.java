@@ -12,7 +12,7 @@ public class Topic extends AbstractEntity {
     @Size(min = 2, max = 50, message = "Topic name must be between 2 and 50 characters.")
     private String topicName;
 
-    @OneToMany(mappedBy = "topicName")
+    @OneToMany(mappedBy = "topic")
     private final List<Thread> threads = new ArrayList<>();
 
     public Topic(@Size(min = 2, max = 50, message = "Topic name must be between 2 and 50 characters.")

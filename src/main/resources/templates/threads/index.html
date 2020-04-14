@@ -14,7 +14,7 @@
             </tr>
             </thead>
             <tr th:each="thread : ${threads}">
-                <td><a th:href="'/threads/detail?threadId=' + ${thread.threadId}" th:text="${thread.threadName}"></a></td>
+                <td><a th:href="'/threads/detail?threadId=' + ${thread.id}" th:text="${thread.threadName}"></a></td>
         </tr>
     </table>
 
