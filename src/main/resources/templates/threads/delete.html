@@ -5,7 +5,7 @@
 <head th:replace="fragments :: head"></head>
 <body class = "container">
 
-    <header th:replace="fragments :: header"></header>
+    <header th:replace="fragments :: head2"></header>
 
     <form method="post">
 
@@ -13,7 +13,7 @@
             <div class="form-group">
                 <label>
                     <span th:text="${thread.threadName}"></span>
-                        <input type="checkbox" name="threadIds" th:value="${thread.threadId}" class="form-control">
+                        <input type="checkbox" name="threadIds" th:value="${thread.id}" class="form-control">
                 </label>
             </div>
         </th:block>

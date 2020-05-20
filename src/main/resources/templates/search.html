@@ -1,10 +1,51 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title></title>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:p="http://www.w3.org/1999/html">
+<head th:replace="fragments :: head">
 </head>
 <body>
+
+    <div th:replace="fragments :: head2"></div>
+
+    <div class="container body-content">
+
+        <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+
+        <form th:action="@{/search/results}" method="post">
+            <h2>Search Term:</h2>
+            <p>
+                <label for="searchTerm">Keyword:</label>
+                <input type="text" name="searchTerm" id="searchTerm" />
+            </p>
+
+            <input type="submit" value="Search" />
+        </form>
+
+        <hr />
+
+        <table class="thread-listing">
+            <tr th:each="thread : ${threads}">
+                <td>
+                    <p>
+                        Thread Id:
+                        <a th:href="@{'/view/' + ${thread.id}}" th:text="${thread.id}"></a>
+                    </p>
+                    <p th:text="${'Thread: ' + thread.threadName}"></p>
+                    <p>
+                        Details:
+                        <a th:href="@{'threads/detail/' + ${thread.threadDetails.id}}" th:text="${thread.threadDetails.threadMessage}"></a>
+                    </p>
+                    <p>
+                        Topic:
+                        <a th:href="@{'topics/index/' + ${thread.topic.id}}" th:text="${thread.topic}"></a>
+                    </p>
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
 
 </body>
 </html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+
+<body class="container body-content">
+<h1 th:text="${'THREADS VIEW TEMPLATE: Thread: ' + thread.threadName}">Default Title</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div class="thread-listing">
+    <p th:text="${'Name: ' + thread.threadName}"></p>
+    <p th:text="${'Details: ' + thread.threadDetails}"></p>
+</div>
+
+</body>
+</html>

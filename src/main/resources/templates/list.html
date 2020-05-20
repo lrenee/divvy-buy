@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<div class="container body-content">
+    <h1 th:text="{#strings.captializeWords(title)}"></h1>
+    <h2 class = "centered">LIST VIEW: View Threads By Topic</h2>
+</div>
+
+<table class="centeredTable">
+    <tr>
+        <th>All</th>
+        <th>Thread</th>
+        <th>Skill</th>
+    </tr>
+
+    <tr>
+        <td>
+            <li>
+                <a th:href="@{/list/threads(column='All', value='View All')}">View All</a>
+            </li>
+        </td>
+        <td>
+            <li th:each="thread: ${threads}">
+                <a th:href="@{/list/threads(column=thread, value=${thread.threadName})}" th:text="${thread.thread.name}"></a>
+            </li>
+        </td>
+        <td>
+            <li th:each="message: ${messages}">
+                <a th:href="@{/list/threads(column=message, value=${thread.threadDetails.message})}" th:text="thread.threadDetails.message}"></a>
+            </li>
+        </td>
+        <td>
+            <li th:each="topic : ${topics}">
+                <a th:href="@{/list/topics(column=topic, value=${topic.topicName})}" th:text="${topic.topicName}"></a>
+            </li>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -16,7 +16,7 @@ public class ThreadDetails extends AbstractEntity {
     private String contactEmail;
 
     public ThreadDetails(@Size( max = 254, message = "Description message is too long!  " +
-            "Maximum message length is 254 characters long.") String message,
+            "Maximum message length is 254 characters long.") String threadMessage,
                          @NotBlank(message = "E-mail is required.")
                          @Email(message = "Invalid e-mail.  Please try again.") String contactEmail) {
         this.threadMessage = threadMessage;

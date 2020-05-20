@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+
+<body class="container body-content">
+<h1 th:text="${'MAIN MESSAGE TEMPLATE VIEW: Thread: ' + thread.thread.Name}">Default Title</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div class="job-listing">
+    <p th:text="${'ID: ' + thread.id}"></p>
+    <p th:text="${'Thread: ' + thread.threadName}"></p>
+    <p>
+        Topic: <a th:href="@{'topics/view/' + ${thread.topic.id}}" th:text="${thread.topic.topicName}"></a>
+    </p>
+    <p> Messages:
+        <ul>
+            <li th:each="message : ${thread.threadDetails.message}">
+                <a th:href="@{'/threads/view/' + ${thread.id}}" th:text="${thread.threadDetails.message}"></a>
+            </li>
+        </ul>
+    </p>
+</div>
+
+</body>
+</html>
