@@ -12,7 +12,7 @@ public class ThreadTerms {
 
             if (threadName.getThreadName().toLowerCase().contains(term.toLowerCase())) {
                 results.add(threadName);
-            } else if (threadName.getThreadDetails().getThreadMessage().toString().toLowerCase().contains(term.toLowerCase())) {
+            } else if (threadName.getThreadDetails().getThreadMessage().toLowerCase().contains(term.toLowerCase())) {
                 results.add(threadName);
             } else if (threadName.getTopic().toString().toLowerCase().contains(term.toLowerCase())) {
                 results.add(threadName);
